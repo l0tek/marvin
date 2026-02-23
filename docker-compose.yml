@@ -1,0 +1,23 @@
+services:
+  wakeword:
+    build: .
+    container_name: marvin
+    environment:
+      - WAKE_WORD=marvin
+      - WAKE_WORD_ALIASES=marwin,marvinn,marvinn,marvyn
+      - WAKE_FUZZY_DISTANCE=1
+      - WAKE_USE_GRAMMAR=1
+      - VOSK_MODEL_PATH=/models/vosk-model-small-de-0.15
+      - ALSA_DEVICE=default
+      - SAMPLE_RATE=16000
+      - DEBUG_WAKEWORD=1
+      - TTS_ENABLED=1
+      - TTS_TEXT=ja hallo hier bin ich
+      - TTS_VOICE=de
+      - TTS_SPEED=165
+      - TTS_COOLDOWN_MS=3000
+    devices:
+      - /dev/snd:/dev/snd
+    group_add:
+      - "audio"
+    restart: unless-stopped
