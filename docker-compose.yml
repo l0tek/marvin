@@ -1,11 +1,13 @@
 services:
-  wakeword:
+  marvin:
+    image: marvin
     build: .
     container_name: marvin
     environment:
       - WAKE_WORD=marvin
       - WAKE_WORD_ALIASES=marwin,marvinn,marvinn,marvyn
       - WAKE_FUZZY_DISTANCE=1
+      - WAKE_COOLDOWN_MS=2000
       - WAKE_USE_GRAMMAR=1
       - VOSK_MODEL_PATH=/models/vosk-model-small-de-0.15
       - ALSA_DEVICE=default
@@ -16,6 +18,9 @@ services:
       - TTS_VOICE=de
       - TTS_SPEED=165
       - TTS_COOLDOWN_MS=3000
+      - OPENROUTER_API_KEY=
+      - OPENROUTER_MODEL=openrouter/free
+      - QUESTION_WINDOW_MS=8000
     devices:
       - /dev/snd:/dev/snd
     group_add:

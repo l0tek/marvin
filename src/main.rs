@@ -1,3 +1,4 @@
+mod dialog;
 mod wakeword;
 
 fn main() -> anyhow::Result<()> {

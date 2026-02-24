@@ -22,10 +22,20 @@ Wake-Word anpassen:
 WAKE_WORD="hallo marvin" docker compose up --build
 ```
 
+OpenRouter fuer Fragen nach Wake-Word aktivieren:
+
+```bash
+OPENROUTER_API_KEY="<dein-key>" \
+OPENROUTER_MODEL="openai/gpt-4o-mini" \
+QUESTION_WINDOW_MS=8000 \
+docker compose up --build
+```
+
 ## Hinweise
 
 - Das Modell wird im Docker-Build heruntergeladen (`vosk-model-small-de-0.15`).
 - Bei Erkennung wird `WAKE WORD erkannt` im Log ausgegeben.
+- Nach Wake-Word wird ein Fragefenster geoeffnet; erkannte Fragen werden an OpenRouter gesendet.
 - Beenden:
 
 ```bash

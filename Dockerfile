@@ -1,4 +1,4 @@
-FROM rust:1.77-bookworm AS builder
+FROM rust:1.85-bookworm AS builder
 WORKDIR /app
 
 ARG TARGETARCH
